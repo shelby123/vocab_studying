@@ -10,7 +10,6 @@ export class RandomNounService {
 
   constructor(private http: HttpClient) {
     http.get('assets/word-data/nouns.txt', { responseType: 'text' as 'json' }).subscribe(data => {
-      console.log(data);
       this.nouns = (data as string).split('\n');
     });
   }
