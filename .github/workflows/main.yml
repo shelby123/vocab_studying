@@ -1,11 +1,11 @@
-name: DeployAWSLambda
-on: [push]
-  branches:
-      - master
+name: DeployToFirebase
+on: 
+  push:
+    branches:
+        - master
 jobs:
   build:
    runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Build
