@@ -1,4 +1,6 @@
-<form [formGroup]="sentenceForm">
-  <textarea formControlName="sentence" id="" cols="30" rows="10">enter a sentence</textarea>
-  <button (click)="saveSentence()">submit</button>
-</form>
+<div class="sentence-entry__container">
+    <form [formGroup]="sentenceForm">
+      <textarea class="sentence-entry__text-area" formControlName="sentence" id="" cols="30" rows="10">enter a sentence</textarea>
+      <button (click)="saveSentence()">submit</button>
+    </form>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { WordService } from '../services/word.service';
 import { RandomNounService } from '../services/random-noun.service';
+import { VocabListService } from '../services/vocab-list.service';
+import { VocabStudyPrompterService } from '../vocab/services/vocab-study-prompter.service';
 
 @Component({
   selector: 'app-word-prompt',
@@ -13,19 +14,25 @@ export class WordPromptComponent implements OnInit {
 
   currentVocabWord = '';
   currentNoun = '';
+  timesStudied = 0;
 
 
-  constructor(private wordService: WordService, private nounService: RandomNounService) { }
+  constructor(private vocabService: VocabStudyPrompterService, private nounService: RandomNounService) { }
 
   ngOnInit() {
   }
 
-  generateNewWord() {
-    const newVocabWord = this.wordService.getRandomWord();
+  newVocabWord() {
+    const newVocabWord = this.vocabService.getRandomWord();
     this.currentVocabWord = newVocabWord;
+    this.timesStudied = this.vocabService.timesStudied(newVocabWord);
     this.currentNoun = this.nounService.getRandomWord();
     console.log('emit new vocabWord to the parent : ' + newVocabWord);
     this.updateVocabWord.emit(newVocabWord);
+  }
+
+  newNoun() {
+    this.currentNoun = this.nounService.getRandomWord();
   }
 
 }

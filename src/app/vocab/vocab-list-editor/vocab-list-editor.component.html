@@ -1,0 +1,16 @@
+<ul>
+  Vocab words:
+  <form [formGroup]="wordForm">
+    <div class="" formArrayName="wordFormArray">
+      <div class="" *ngFor="let word of wordControls.controls; let i=index">
+        <li>
+          <div class="" [formGroupName]="i">
+            <input type="text" formControlName="word" id="" [placeholder]="word.value"/>
+          </div>
+        </li>
+      </div>
+    </div>
+    <button (click)="addWord('')">add new word</button>
+    <button (click)="saveChanges()">save</button>
+  </form>
+</ul>
